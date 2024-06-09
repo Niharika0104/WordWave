@@ -87,7 +87,7 @@ export default function Login() {
 
     <span>Login with Github</span>
   </button>
-            <div className="text-center w-full text-gray-900 font-bold text-md my-3"> Don't have an account? <span className="text-indigo-600 underline cursor-pointer ">Register here</span></div>
+            <div className="text-center w-full text-gray-900 font-bold text-md my-3"> {"Don't have an account?"} <span className="text-indigo-600 underline cursor-pointer ">Register here</span></div>
           </form>
         </div>
       </div>

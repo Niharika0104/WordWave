@@ -1,6 +1,6 @@
 "use client"
 import React, { useState,FormEvent  } from "react";
-import { FaEye, FaEyeSlash ,FaGoogle,FaGithub,FaMailBulk,FaKey, FaEnvelope} from 'react-icons/fa';
+import { FaEnvelope} from 'react-icons/fa';
 
 
 
