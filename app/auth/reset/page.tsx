@@ -2,6 +2,6 @@
 
 import ResetPassword from "@/Components/AuthComponents/ResetPassword"
 
-export default function LoginComponent(){
+export default function ResetPasswordComponent(){
     return <ResetPassword/>
 }
