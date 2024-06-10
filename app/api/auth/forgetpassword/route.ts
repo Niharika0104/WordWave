@@ -2,22 +2,22 @@ import client from "@/app/db";
 import bcrypt from 'bcrypt';
 import { cookies } from 'next/headers';
 import jwt from 'jsonwebtoken';
+import sendEmail from "@/app/utils/sendMail";
 
 import { NextRequest, NextResponse } from "next/server";
 
 
 
-interface User {
+interface UserData {
 
-    name: string;
-    password: string;
+   
     email: string;
 }
 
 export async function POST(req: NextRequest) {
     try {
         // Parse request body
-        const userdata: User = await req.json();
+        const userdata: UserData = await req.json();
    
         // Find user by username or email
         const user = await client.user({
@@ -29,17 +29,9 @@ export async function POST(req: NextRequest) {
 
         if (user) {
             // Compare passwords
-            const isPasswordValid: boolean = await bcrypt.compare(userdata.password, user.password);
-            if (isPasswordValid) {
-                const result = {
-                    email: user.email,
-                    name: user.name,
-                    phonenumber: user.phoneNumber
-                    
-                };
-
+           
                 const secretKey: string = process.env.SECRET_KEY || "";
-                const token: string = jwt.sign(result, secretKey, { expiresIn: '15d' });
+                const token: string = jwt.sign(user, secretKey, { expiresIn: '5m' });
 
                 cookies().set("token", token, {
                     maxAge: 15 * 24 * 60 * 60 * 1000, // 15 days
@@ -47,13 +39,11 @@ export async function POST(req: NextRequest) {
                     secure: true,
                     path: '/',
                 });
-
-                return NextResponse.json({ data: result, status: 200 });
-            } else {
-                return NextResponse.json({ message: "Incorrect password", status: 401 });
-            }
-        } else {
-            return NextResponse.json({ message: "User does not exist", status: 400 });
+                sendEmail(process.env.FROM_EMAIL_ADDRESS || "",user.email,"Reset Your Password","reset you password",token)
+                return NextResponse.json({ data: user, status: 200 });
+            } 
+        else {
+            return NextResponse.json({ message: "Email does not exist", status: 400 });
         }
 
     } catch (error: any) {
