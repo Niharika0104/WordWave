@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToastContainer } from 'react-toastify';
 // import { Poppins } from "next/font/google";
 import "./globals.css";
 
@@ -16,7 +17,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body >{children}</body>
+      <body >
+      <ToastContainer 
+        position="top-center" 
+        autoClose={5000} 
+        hideProgressBar 
+        newestOnTop 
+        closeOnClick 
+        rtl={false} 
+        pauseOnFocusLoss 
+        draggable 
+        pauseOnHover 
+      />
+        {children}</body>
     </html>
   );
 }
