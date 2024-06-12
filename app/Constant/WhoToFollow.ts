@@ -21,3 +21,4 @@ const follow=[
         bio:"3x🏆Top writer in AI | Author: Ultimate NN Programming with Python | 🤝LinkedIn https://www.linkedin.com/in/vishal-rajput-999164122/"
     }
 ]
+export default follow

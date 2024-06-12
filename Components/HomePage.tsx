@@ -2,6 +2,11 @@
 
 import Navbar from "./Navbar"
 import TopicsScrollBar from '@/Components/TopicsScrollBar'
+import StaffPick from '@/Components/StaffPick'
+import Recommendation from '@/Components/Recommendation'
+
+
+
 export default function HomePage(){
 return (
     <>
@@ -11,7 +16,10 @@ return (
                 <TopicsScrollBar/>
             </div>
         </div>
-        <div className=" w-[40%] border border-gray-100">dfd</div>
+        <div className=" w-[40%] border border-gray-100 flex flex-col gap-4">
+        <StaffPick/>
+        <Recommendation/>
+        </div>
     </div>
     </>
 )
