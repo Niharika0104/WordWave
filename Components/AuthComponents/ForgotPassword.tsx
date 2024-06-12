@@ -1,15 +1,28 @@
 "use client"
 import React, { useState,FormEvent  } from "react";
 import { FaEnvelope} from 'react-icons/fa';
-
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function ForgotPassword(){
     const [email, setEmail] = useState("");
     const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
-
+      const validateEmail = (email: string) => {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
+      };
+    
         e.preventDefault();
-        // Handle login logic here
+        if (!email) {
+          toast.error('Email is required');
+          return;
+        }
+    
+        if (!validateEmail(email)) {
+          toast.error('Please enter a valid email address');
+          return;
+        }
       };
     return(
       

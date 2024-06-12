@@ -4,14 +4,36 @@ import React, { useState,FormEvent  } from "react";
 import Image from "next/image";
 import registerImage from "@/public/Images/RegisterImage.svg";
 import { FaEye, FaEyeSlash ,FaGoogle,FaGithub,FaMailBulk,FaKey, FaEnvelope} from 'react-icons/fa';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   
+  const validateEmail = (email: string) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+  };
+
+  
   const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
 
     e.preventDefault();
-    // Handle login logic here
+    if (!email) {
+      toast.error('Email is required');
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      toast.error('Please enter a valid email address');
+      return;
+    }
+
+    if (!password) {
+      toast.error('Password is required');
+      return;
+    }
+
   };
 
   return (
@@ -47,7 +69,7 @@ export default function Login() {
                   id="password"
                   name="password"
                   type="password"
-                  required
+                  
                   placeholder="Enter your password"
                   className="block w-full h-10 rounded-md pl-10 pr-4 border-0 py-6 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   value={password}

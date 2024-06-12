@@ -6,6 +6,8 @@ import Image from "next/image";
 import registerImage from "@/public/Images/RegisterImage.svg";
 import { FaEye, FaGoogle, FaGithub,FaMailBulk,FaKey, FaEnvelope } from 'react-icons/fa';
 import { CgNametag } from "react-icons/cg";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -15,7 +17,40 @@ export default function Register() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle registration logic here
+    const validateEmail = (email: string) => {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(String(email).toLowerCase());
+    };
+    if (!name) {
+      toast.error('Name is required');
+      return;
+    }
+
+    if (!email) {
+      toast.error('Email is required');
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      toast.error('Please enter a valid email address');
+      return;
+    }
+
+    if (!password) {
+      toast.error('Password is required');
+      return;
+    }
+
+    if (!confirmpassword) {
+      toast.error('Confirm password is required');
+      return;
+    }
+
+    if (password !== confirmpassword) {
+      toast.error('Passwords do not match');
+      return;
+    }
+
   };
 
   return (
