@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ToastContainer } from 'react-toastify';
 // import { Poppins } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/Components/Navbar";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -21,14 +22,14 @@ export default function RootLayout({
       <ToastContainer 
         position="top-center" 
         autoClose={5000} 
-        hideProgressBar 
+        className={"rounded-full h-10"}
+      
         newestOnTop 
-        closeOnClick 
-        rtl={false} 
         pauseOnFocusLoss 
         draggable 
         pauseOnHover 
       />
+      <Navbar/>
         {children}</body>
     </html>
   );
