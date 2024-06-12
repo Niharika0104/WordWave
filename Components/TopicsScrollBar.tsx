@@ -1,7 +1,7 @@
 "use client"
 import React, { useRef } from 'react';
 import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
-import Topics from '@/app/Constant/TopicsData';
+import Topics from '@/Constant/TopicsData';
 const Carousel: React.FC = () => {
   const carouselRef = useRef<HTMLDivElement>(null);
 

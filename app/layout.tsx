@@ -30,6 +30,7 @@ export default function RootLayout({
         pauseOnHover 
       />
       <Navbar/>
+    <p>hello</p>
         {children}</body>
     </html>
   );

@@ -1,4 +1,4 @@
-import client from "@/app/db";
+import client from "@/db";
 import bcrypt from 'bcrypt';
 import { cookies } from 'next/headers';
 import jwt from 'jsonwebtoken';

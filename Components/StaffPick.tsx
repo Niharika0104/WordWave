@@ -1,5 +1,5 @@
 import React from 'react'
-import staffpicks from '@/app/Constant/StaffPicks'
+import staffpicks from '@/Constant/StaffPicks'
 import Image from 'next/image'
 export default function Component(){
     return (
