@@ -1,4 +1,4 @@
-import client from "@/app/db";
+import client from "@/db";
 
 
 import { NextRequest, NextResponse } from "next/server";

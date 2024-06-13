@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic';
 import { useMemo, useState } from "react";
 import 'react-quill/dist/quill.snow.css';
+import EditorNavbar from './EditorNavbar';
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -45,15 +46,7 @@ function App() {
 
     return (
       <>
-      <div className="text-2xl font-bold text-black">
-      <h1 className=" font-bold">
-               <span className='text-indigo-700 font-extrabold font-poppins'>Word</span>
-               <span className='text-yellow-500 font-poppins font-extrabold'>Wave</span>
-               <span className='text-2xl'>.</span>
-
-
-               
-            </h1></div>
+     <EditorNavbar title={title} content={body}/>
         <ReactQuill
             value={title}
             onChange={setTitle}

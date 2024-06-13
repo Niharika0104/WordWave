@@ -1,5 +1,5 @@
 import React from 'react'
-import topics from '@/app/Constant/RecommendedTopics'
+import topics from '@/Constant/RecommendedTopics'
 
 export default function Component(){
     return (

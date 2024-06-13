@@ -1,8 +1,8 @@
-import client from "@/app/db";
+import client from "@/db";
 import bcrypt from 'bcrypt';
 import { cookies } from 'next/headers';
 import jwt from 'jsonwebtoken';
-import sendEmail from "@/app/utils/sendMail";
+import sendEmail from "@/utils/sendMail";
 
 import { NextRequest, NextResponse } from "next/server";
 
