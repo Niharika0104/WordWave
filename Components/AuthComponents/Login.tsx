@@ -3,20 +3,23 @@
 import React, { useState,FormEvent  } from "react";
 import Image from "next/image";
 import registerImage from "@/public/Images/RegisterImage.svg";
+import { useRouter } from "next/navigation";
 import { FaEye, FaEyeSlash ,FaGoogle,FaGithub,FaMailBulk,FaKey, FaEnvelope} from 'react-icons/fa';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
 export default function Login() {
+  const router=useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
+  const [loading,setloading]=useState(false);
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(String(email).toLowerCase());
   };
 
   
-  const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e:(any)) => {
 
     e.preventDefault();
     if (!email) {
@@ -33,7 +36,25 @@ export default function Login() {
       toast.error('Password is required');
       return;
     }
-
+    else{
+      try{
+        setloading(true);
+    const req=await axios.post("/api/auth/login",
+      {
+        "email":email,
+        "password":password
+      }
+    )
+    setloading(false);
+if(req?.data)router.push("/home");
+    }
+ 
+  catch(ex:any){
+    toast.error("some error has occured");
+console.log(ex);
+  }
+}
+    
   };
 
   return (
@@ -88,8 +109,8 @@ export default function Login() {
               <p className="font-bold text-sm sm:text-md underline cursor-pointer text-indigo-600">Forget your Password?</p>
             </div>
             <div className="flex justify-center mt-2">
-              <button type="submit" className="w-full text-center h-10 bg-indigo-600 text-white rounded-md hover:opacity-80">
-                Login
+              <button type="submit" className="w-full flex justify-center items-center h-10 bg-indigo-600 text-white font-bold rounded-md hover:opacity-80" onClick={handleSubmit}>
+               {loading?<div className="animate-spin rounded-full h-6 w-6 border-t-4 border-b-4 border-white"></div>:<div>Login</div>} 
               </button>
             </div>
             <div className="flex items-center my-5">

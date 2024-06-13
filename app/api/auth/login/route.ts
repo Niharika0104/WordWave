@@ -9,7 +9,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 interface User {
 
-    name: string;
+    name?: string;
     password: string;
     email: string;
 }
