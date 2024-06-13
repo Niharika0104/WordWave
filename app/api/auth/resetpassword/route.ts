@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
         const userdata: UserData = await req.json();
    
         // Find user by username or email
-        const user = await client.update({
+        const user = await client.user.update({
             data:{ password:userdata.password },
             where: {
             email: userdata.email,

@@ -30,8 +30,8 @@ model Post {
   content    String
   author     User        @relation(fields: [authorId], references: [id])
   authorId   String
-  category   Category    @relation(fields: [categoryId], references: [id])
-  categoryId String
+  category   Category?    @relation(fields: [categoryId], references: [id])
+  categoryId String?
   likes      Like[]
   comments   Comment[]
   savedBy    SavedPost[]

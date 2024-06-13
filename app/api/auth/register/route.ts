@@ -37,12 +37,12 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
         if (exists.length > 0) return NextResponse.json({ message: "User with this email already exists", status: 400 })
 
-        const user = await client.users.create(
+        const user = await client.user.create(
             {
                 data: {
                     name: userdata.name,
                     email: userdata.email,
-                    phoneNumber: userdata.phonenumber,
+                    phonenumber: userdata.phonenumber||"",
                     password: hashedPassword
                   
                    

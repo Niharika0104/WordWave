@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
         const userdata: User = await req.json();
    
         // Find user by username or email
-        const user = await client.user({
+        const user = await client.user.findFirst({
             where: {
             email: userdata.email 
                
@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
                 const result = {
                     email: user.email,
                     name: user.name,
-                    phonenumber: user.phoneNumber
+                    phonenumber: user.phonenumber
                     
                 };
 

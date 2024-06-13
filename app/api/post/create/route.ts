@@ -22,6 +22,7 @@ export async function POST(req: NextRequest) {
                 authorId: postdata.userId,
                 title: postdata.title,
                 content: postdata.content,
+                
             },
         });
     } catch (error: any) {

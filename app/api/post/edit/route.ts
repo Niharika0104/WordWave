@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
         // Parse request body
         const postdata: PostData = await req.json();
    
-        const newPost = await client.post.updata({
+        const newPost = await client.post.update({
             data: {
                 authorId: postdata.userId,
                 title: postdata.title,
