@@ -1,9 +1,4 @@
 import type { Metadata } from "next";
-// import { Poppins } from "next/font/google";
-
-
-
-// const inter = Inter({ subsets: ["latin"] });
 
 
 export default function RootLayout({
@@ -14,6 +9,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body >
+        
         {children}</body>
     </html>
   );

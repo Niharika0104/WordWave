@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ToastContainer } from 'react-toastify';
 // import { Poppins } from "next/font/google";
-import "./globals.css";
+import "@/app/globals.css";
 import Navbar from "@/Components/Navbar";
 
 // const inter = Inter({ subsets: ["latin"] });
@@ -19,17 +19,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body >
-      <ToastContainer 
-        position="top-center" 
-        autoClose={5000} 
-        className={"rounded-full h-10"}
-      
-        newestOnTop 
-        pauseOnFocusLoss 
-        draggable 
-        pauseOnHover 
-      />
-     
+
+     <Navbar/>
         {children}</body>
     </html>
   );
