@@ -8,7 +8,6 @@ import EditorNavbar from "@/Components/EditorComponents/EditorNavbar";
 const Editor: React.FC = () => {
     return (
        <>
-       
         <EditorComponent />
         </>
     );
