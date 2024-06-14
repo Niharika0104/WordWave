@@ -18,6 +18,7 @@
     "inline-css": "^3.0.0",
     "is-hotkey": "^0.2.0",
     "is-url": "^1.2.4",
+    "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
     "jsx-to-string": "^1.4.0",
     "next": "14.2.3",
@@ -36,6 +37,7 @@
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
     "@types/cookie": "^0.6.0",
+    "@types/js-cookie": "^3.0.6",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20.14.2",
     "@types/nodemailer": "^6.4.15",
