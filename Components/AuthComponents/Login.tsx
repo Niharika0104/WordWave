@@ -7,8 +7,10 @@ import { useRouter } from "next/navigation";
 import { FaEye, FaEyeSlash ,FaGoogle,FaGithub,FaMailBulk,FaKey, FaEnvelope} from 'react-icons/fa';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 import axios from "axios";
 export default function Login() {
+
   const router=useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -46,7 +48,11 @@ export default function Login() {
       }
     )
     setloading(false);
-if(req?.data)router.push("/home");
+if(req.status==200){
+
+ 
+  await router.push("/home");
+}
     }
  
   catch(ex:any){

@@ -1,32 +1,40 @@
-// AuthContext.tsx
-
+"use client"
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import Cookies from 'js-cookie';
+import Cookies from 'universal-cookie';
 import jwt from 'jsonwebtoken';
-
+import axios from 'axios';
 interface AuthContextType {
     user: any;
-    setUser: React.Dispatch<React.SetStateAction<any>>;
+    setUserFnc: (obj:any)=>void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: Readonly<{
     children: React.ReactNode;
-  }>) => {
+}>) => {
     const [user, setUser] = useState<any>(null);
-
+    const setUserFnc=(obj:any)=>{
+        console.log("users beingset")
+        setUser("2")
+    }
+    const cookies = new Cookies();
+    console.log(cookies,"cookies")
+    console.log(user)
     useEffect(() => {
-        const token = Cookies.get('token');
-        if (token) {
-            const decodedToken = jwt.verify(token,process.env.SECRET_KEY||"");
-            setUser(decodedToken);
+      const fetchtoken=async ()=>{  try {
+        console.log("called now")
+            const response = await axios.get("/api/auth/token");
+            setUser(response.data.user);
+          } catch (error) {
+            setUser(null);
+          } 
         }
+        fetchtoken();
     }, []);
 
     return (
-      
-        <AuthContext.Provider value={{ user, setUser }}>
+        <AuthContext.Provider value={{ user, setUserFnc }}>
             {children}
         </AuthContext.Provider>
     );

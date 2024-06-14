@@ -18,11 +18,11 @@
     "inline-css": "^3.0.0",
     "is-hotkey": "^0.2.0",
     "is-url": "^1.2.4",
-    "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
     "jsx-to-string": "^1.4.0",
     "next": "14.2.3",
     "nodemailer": "^6.9.13",
+    "nookies": "^2.5.2",
     "quill-better-table": "^1.2.10",
     "quill-image-resize-module": "^3.0.0",
     "react": "^18",
@@ -32,7 +32,8 @@
     "react-quill": "^2.0.0",
     "react-toastify": "^10.0.5",
     "suneditor": "^2.46.3",
-    "suneditor-react": "^3.6.1"
+    "suneditor-react": "^3.6.1",
+    "universal-cookie": "^7.1.4"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
