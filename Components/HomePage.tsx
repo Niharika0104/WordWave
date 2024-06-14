@@ -6,6 +6,7 @@ import StaffPick from '@/Components/StaffPick'
 import Recommendation from '@/Components/Recommendation'
 import WhoToFollow from '@/Components/WhoToFollow'
 import Footer from '@/Components/Footer'
+import Article from "./Article"
 
 
 
@@ -14,8 +15,9 @@ return (
     <>
     <div className="flex w-full ">
         <div className=" w-[60%] border border-gray-100">
-            <div>
+            <div className=" w-4/5 mx-auto">
                 <TopicsScrollBar/>
+                <Article/>
             </div>
         </div>
         <div className=" w-[40%] border border-gray-100 ">

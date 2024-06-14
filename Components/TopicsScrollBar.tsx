@@ -18,7 +18,7 @@ const Carousel: React.FC = () => {
   };
 
   return (
-    <div className=" w-4/5 mx-auto mt-5 flex h-20 items-center ">
+    <div className=" mt-5 flex h-20 items-center ">
       <button
         className="   text-gray-700 p-2 rounded-full focus:outline-none"
         onClick={scrollLeft}
