@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { ToastContainer } from 'react-toastify';
-// import { Poppins } from "next/font/google";
+import 'react-toastify/dist/ReactToastify.css'; // Ensure you import the styles for react-toastify
 import "@/app/globals.css";
 import Navbar from "@/Components/Navbar";
-
-// const inter = Inter({ subsets: ["latin"] });
+import { AuthProvider } from "../Context/AuthContext";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,11 +16,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body >
-
-     <Navbar/>
-        {children}</body>
-    </html>
+  
+        <AuthProvider>
+          <Navbar />
+          {children}
+          <ToastContainer />
+        </AuthProvider>
+     
   );
 }

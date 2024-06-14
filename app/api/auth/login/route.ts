@@ -2,7 +2,7 @@ import client from "@/db";
 import bcrypt from 'bcrypt';
 import { cookies } from 'next/headers';
 import jwt from 'jsonwebtoken';
-
+import { useAuth } from "@/app/Context/AuthContext";
 import { NextRequest, NextResponse } from "next/server";
 
 
@@ -15,6 +15,8 @@ interface User {
 }
 
 export async function POST(req: NextRequest) {
+    // const auth=useAuth();
+    // console.log(auth)
     try {
         // Parse request body
         const userdata: User = await req.json();
@@ -25,6 +27,10 @@ export async function POST(req: NextRequest) {
             email: userdata.email 
                
             },
+            include:{
+                posts:true,
+                savedPosts:true
+            }
         });
 
         if (user) {
@@ -34,8 +40,8 @@ export async function POST(req: NextRequest) {
                 const result = {
                     email: user.email,
                     name: user.name,
-                    phonenumber: user.phonenumber
-                    
+                    phonenumber: user.phonenumber,
+                    userId:user.id
                 };
 
                 const secretKey: string = process.env.SECRET_KEY || "";
@@ -47,7 +53,13 @@ export async function POST(req: NextRequest) {
                     secure: true,
                     path: '/',
                 });
+                const auth = useAuth(); // Ensure you have access to useAuth hook
 
+                if (auth) {
+                    auth.setUserFnc(result); // Set the user in context
+                } else {
+                    console.error("Auth context not available.");
+                }
                 return NextResponse.json({ data: result, status: 200 });
             } else {
                 return NextResponse.json({ message: "Incorrect password", status: 401 });

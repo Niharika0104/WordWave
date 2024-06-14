@@ -4,11 +4,14 @@ import dynamic from 'next/dynamic';
 import { useMemo, useState } from "react";
 import 'react-quill/dist/quill.snow.css';
 import EditorNavbar from './EditorNavbar';
+import { useAuth } from '@/app/Context/AuthContext';
 import axios from 'axios';
-
+import { toast, ToastContainer } from 'react-toastify';
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 function App() {
+    const auth=useAuth();
+    console.log(auth)
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [loading, setloading] = useState(false);
@@ -48,16 +51,18 @@ function App() {
     const publish=async ()=>{
         setloading(true);
        const res= await axios.post("/api/post/create",{
-            authorId: "jk",
+            authorId: auth.user.userId,
                 title: title,
                 content: body,
         })
         const data=res.data;
+        console.log(data,"post data")
         if(res.status==200 ){
             console.log("data adding")
             setloading(false);
             setTitle("")
             setBody("")
+            //toast.success("article published successfully")
 
         }
     }
