@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; // Ensure you import the styles for react-toastify
 import "@/app/globals.css";
-import Navbar from "@/Components/Navbar";
+import Navbar from "@/Components/HomePageComponents/Navbar";
 import { AuthProvider } from "../Context/AuthContext";
 
 export const metadata: Metadata = {

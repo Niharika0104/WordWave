@@ -3,7 +3,7 @@ import { ToastContainer } from 'react-toastify';
 // import { Poppins } from "next/font/google";
 import 'react-toastify/dist/ReactToastify.css';
 import "./globals.css";
-import Navbar from "@/Components/Navbar";
+import Navbar from "@/Components/HomePageComponents/Navbar";
 
 // const inter = Inter({ subsets: ["latin"] });
 
