@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }: Readonly<{
     const [loading,setloading]=useState(false);
     const setUserFnc=(obj:any)=>{
         console.log("users beingset")
-        setUser("2")
+       
     }
     const cookies = new Cookies();
     console.log(cookies,"cookies")

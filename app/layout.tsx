@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ToastContainer } from 'react-toastify';
 // import { Poppins } from "next/font/google";
+import 'react-toastify/dist/ReactToastify.css';
 import "./globals.css";
 import Navbar from "@/Components/Navbar";
 

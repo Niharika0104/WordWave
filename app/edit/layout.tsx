@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { AuthProvider } from "../Context/AuthContext";
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function RootLayout({
   children,
 }: Readonly<{
