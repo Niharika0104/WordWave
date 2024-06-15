@@ -14,6 +14,7 @@
     "bcrypt": "^5.1.1",
     "cookie": "^0.6.0",
     "cookie-parser": "^1.4.6",
+    "html-react-parser": "^5.1.10",
     "image-extensions": "^1.1.0",
     "inline-css": "^3.0.0",
     "is-hotkey": "^0.2.0",

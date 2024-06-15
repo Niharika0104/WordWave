@@ -10,13 +10,13 @@ export default function Component(){
 topics.map((item)=>{
     return (<div className='flex justify-between items-center w-full'>
         <div className='w-4/5'>
-        <div className='flex gap-2'>
+        <div className='flex gap-4'>
         <Image src={item.icon} alt={"staff icons"} className='h-6 w-6 rounded-full'/>
         <div className='text-black font-bold'>{item.name}</div>
         </div>
         <div className='text-md'>{item.bio.substring(0,50)}...</div>
         </div>
-        <div className='border font-bold px-6 py-2 border-indigo-600 rounded-full'>Follow</div>
+        <div className='border font-bold px-5 text-white py-2 bg-indigo-600 rounded-full'>Follow</div>
     </div>)
 })
                 }

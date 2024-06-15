@@ -6,10 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 
 interface PostData {
-    authorId:string;
-    title:string;
-    content:string;
-   
+    userId:string;
 }
 
 export async function POST(req: NextRequest) {
@@ -17,15 +14,12 @@ export async function POST(req: NextRequest) {
         // Parse request body
         const postdata: PostData = await req.json();
    
-        const newPost = await client.post.create({
-            data: {
-                authorId: postdata.authorId,
-                title: postdata.title,
-                content: postdata.content,
-                
+        const posts = await client.post.findMany({
+            where: {
+                authorId: postdata.userId
             },
         });
-        return NextResponse.json({message:"data added successfuly",status:200})
+        return NextResponse.json({data:posts,status:200})
     } catch (error: any) {
         console.error("Error processing request:", error);
         return NextResponse.json({ message: "Internal server error", status: 500 });

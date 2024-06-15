@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ToastContainer } from 'react-toastify';
 // import { Poppins } from "next/font/google";
+import 'react-toastify/dist/ReactToastify.css';
 import "./globals.css";
 import Navbar from "@/Components/Navbar";
 
@@ -16,7 +17,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   return (
+    
     <html lang="en">
       <body >
       <ToastContainer 
@@ -29,7 +32,7 @@ export default function RootLayout({
         draggable 
         pauseOnHover 
       />
-     
+    
         {children}</body>
     </html>
   );
