@@ -11,7 +11,6 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 function App() {
     const auth=useAuth();
-    console.log(auth)
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [loading, setloading] = useState(false);
@@ -49,6 +48,7 @@ function App() {
         'link', 'image', 'video'
     ];
     const publish=async ()=>{
+        console.log(title,body)
         setloading(true);
        const res= await axios.post("/api/post/create",{
             authorId: auth.user.userId,
@@ -62,7 +62,7 @@ function App() {
             setloading(false);
             setTitle("")
             setBody("")
-            //toast.success("article published successfully")
+            toast.success("article published successfully")
 
         }
     }
