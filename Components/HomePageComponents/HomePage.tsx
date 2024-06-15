@@ -1,11 +1,11 @@
 "use client"
 
 import Navbar from "./Navbar"
-import TopicsScrollBar from '@/Components/TopicsScrollBar'
-import StaffPick from '@/Components/StaffPick'
-import Recommendation from '@/Components/Recommendation'
-import WhoToFollow from '@/Components/WhoToFollow'
-import Footer from '@/Components/Footer'
+import TopicsScrollBar from '@/Components/HomePageComponents/TopicsScrollBar'
+import StaffPick from '@/Components/HomePageComponents/StaffPick'
+import Recommendation from '@/Components/HomePageComponents/Recommendation'
+import WhoToFollow from '@/Components/HomePageComponents/WhoToFollow'
+import Footer from '@/Components/HomePageComponents/Footer'
 import Article from "./Article"
 
 
