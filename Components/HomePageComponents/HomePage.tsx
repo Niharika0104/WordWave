@@ -6,7 +6,7 @@ import StaffPick from '@/Components/HomePageComponents/StaffPick'
 import Recommendation from '@/Components/HomePageComponents/Recommendation'
 import WhoToFollow from '@/Components/HomePageComponents/WhoToFollow'
 import Footer from '@/Components/HomePageComponents/Footer'
-import Article from "./Article"
+import Article from "./ArticlesSection"
 
 
 
