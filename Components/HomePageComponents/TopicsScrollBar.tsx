@@ -18,7 +18,7 @@ const Carousel: React.FC = () => {
   };
 
   return (
-    <div className=" mt-5 flex h-20 items-center ">
+    <div className=" mt-5 flex h-20 items-center w-[90%] mx-auto sm:w-full">
       <button
         className="   text-gray-700 p-2 rounded-full focus:outline-none"
         onClick={scrollLeft}
@@ -30,7 +30,7 @@ const Carousel: React.FC = () => {
         ref={carouselRef}
       >
         {Topics.map((item:string)=>{
-          return ( <div className=" text-gray-700 px-4 w-min-max">{item}</div>)
+          return ( <div className="px-2 text-gray-700 sm:px-4 w-min-max">{item}</div>)
         })}
        
        
@@ -43,7 +43,7 @@ const Carousel: React.FC = () => {
         {/* Add more items as needed */}
       </div>
       <button
-        className="   text-gray-700 p-2 rounded-full hover:bg-gray-400 focus:outline-none"
+        className="   text-gray-700 p-2 rounded-full focus:outline-none"
         onClick={scrollRight}
       >
        <BiChevronRight fontSize={30}/>
