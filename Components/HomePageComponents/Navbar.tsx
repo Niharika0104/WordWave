@@ -18,6 +18,7 @@ export default function Navbar() {
         </div>
       </div>
       <div className="flex gap-6 items-center text-xl">
+        <div className="block sm:hidden">   <BiSearch fontSize={20} /></div>
         <span className="flex items-center gap-1 cursor-pointer" onClick={()=>{router.push("/edit")}}>
           <BiEdit />
           <span>Editor</span>
