@@ -29,8 +29,8 @@ const Carousel: React.FC = () => {
         className=" flex overflow-x-hidden whitespace-nowrap "
         ref={carouselRef}
       >
-        {Topics.map((item:string)=>{
-          return ( <div className="px-2 text-gray-700 sm:px-4 w-min-max">{item}</div>)
+        {Topics.map((item:string,index)=>{
+          return ( <div className="px-2 text-gray-700 sm:px-4 w-min-max" key={index}>{item}</div>)
         })}
        
        

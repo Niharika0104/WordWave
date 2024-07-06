@@ -7,8 +7,8 @@ export default function Component(){
             <h3 className='text-xl'>Staff Pick's</h3>
             <div className='flex flex-col gap-3  mt-3'>
                 {
-staffpicks.map((item)=>{
-    return (<div>
+staffpicks.map((item,index)=>{
+    return (<div key={index}>
         <div className='flex gap-2'>
             <Image src={item.icon} alt={"staff icons"} className='h-6 w-6 rounded-full'/>
             <div className='text-black font-bold'>{item.title}</div>

@@ -41,17 +41,22 @@ export default function Login() {
     else{
       try{
         setloading(true);
-    const req=await axios.post("/api/auth/login",
+    const res=await axios.post("/api/auth/login",
       {
         "email":email,
         "password":password
       }
     )
-    setloading(false);
-if(req.status==200){
-
+   
+if(res.data.status==200){
+  setloading(false);
  
   await router.push("/home");
+}
+else if(res.data.status==401){
+  setloading(false);
+ toast.error("Invalid credentials");
+  
 }
     }
  
@@ -136,7 +141,7 @@ console.log(ex);
 
     <span>Login with Github</span>
   </button>
-            <div className="text-center w-full text-gray-900 font-bold text-md my-3"> {"Don't have an account?"} <span className="text-indigo-600 underline cursor-pointer ">Register here</span></div>
+            <div className="text-center w-full text-gray-900 font-bold text-md my-3"> {"Don't have an account?"} <span className="text-indigo-600 underline cursor-pointer " onClick={()=>router.push("/auth/register")}>Register here</span></div>
           </form>
         </div>
       </div>
