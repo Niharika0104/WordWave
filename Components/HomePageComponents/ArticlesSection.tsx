@@ -15,7 +15,7 @@ import { useAuth } from "@/app/Context/AuthContext";
 import Shimmer from './Shimmer';
 import { PostInfo } from '@/app/Types/types';
 import { ImGit } from 'react-icons/im';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 const imageExtracter=(content:string)=>{
     const parser = new DOMParser();
 

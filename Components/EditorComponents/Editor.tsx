@@ -6,7 +6,7 @@ import 'react-quill/dist/quill.snow.css';
 import EditorNavbar from './EditorNavbar';
 import { useAuth } from '@/app/Context/AuthContext';
 import axios from 'axios';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 function App() {
