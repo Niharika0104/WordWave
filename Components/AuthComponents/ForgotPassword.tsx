@@ -1,7 +1,7 @@
 "use client"
 import React, { useState,FormEvent  } from "react";
 import { FaEnvelope} from 'react-icons/fa';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 import 'react-toastify/dist/ReactToastify.css';
 
 
