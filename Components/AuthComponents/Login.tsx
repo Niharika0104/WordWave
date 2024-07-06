@@ -5,8 +5,8 @@ import Image from "next/image";
 import registerImage from "@/public/Images/RegisterImage.svg";
 import { useRouter } from "next/navigation";
 import { FaEye, FaEyeSlash ,FaGoogle,FaGithub,FaMailBulk,FaKey, FaEnvelope} from 'react-icons/fa';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-hot-toast';
+
 
 import axios from "axios";
 export default function Login() {
@@ -53,11 +53,12 @@ if(res.data.status==200){
  
   await router.push("/home");
 }
-else if(res.data.status==401){
+else if(res.data.status!=200){
   setloading(false);
- toast.error("Invalid credentials");
+ toast.error(res.data.message);
   
 }
+
     }
  
   catch(ex:any){

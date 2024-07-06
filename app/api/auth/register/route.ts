@@ -72,7 +72,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
                 }
             )
 
-        console.log("send..")
+       
         
 
         // Send success response with created user data
@@ -97,7 +97,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
                 data: null
             },
             {
-                status: 400
+                status: 500
             }
         )
     }

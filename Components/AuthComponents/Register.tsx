@@ -6,8 +6,8 @@ import Image from "next/image";
 import registerImage from "@/public/Images/RegisterImage.svg";
 import { FaEye, FaGoogle, FaGithub,FaMailBulk,FaKey, FaEnvelope } from 'react-icons/fa';
 import { CgNametag } from "react-icons/cg";
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-hot-toast';
+
 import { useRouter } from "next/navigation";
 import axios from "axios";
 
@@ -66,14 +66,15 @@ export default function Register() {
      
     }
   )
-  setloading(false);
+  
 if(req.data.status==200){
-
+  setloading(false);
 
 await router.push("/home");
 }
-if(req.data?.status==401){
-toast.error('Invalid user');
+else if(req.data?.status!=401){
+  setloading(false);
+toast.error(req?.data?.status);
 }
   }
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { ToastContainer } from 'react-toastify';
+import { Toaster } from 'react-hot-toast';
 import { Poppins } from "next/font/google";
-import 'react-toastify/dist/ReactToastify.css';
+
 import "./globals.css";
 import Navbar from "@/Components/HomePageComponents/Navbar";
 
@@ -22,16 +22,10 @@ export default function RootLayout({
     
     <html lang="en">
       <body >
-      <ToastContainer 
-        position="top-center" 
-        autoClose={5000} 
-        className={"rounded-full h-10"}
-      
-        newestOnTop 
-        pauseOnFocusLoss 
-        draggable 
-        pauseOnHover 
-      />
+      <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
     
         {children}</body>
     </html>
