@@ -7,8 +7,8 @@ export default function Component(){
             <h3 className='text-xl'>Who to Follow</h3>
             <div className='flex flex-col gap-3  mt-3  '>
                 {
-topics.map((item)=>{
-    return (<div className='flex justify-between items-center w-full'>
+topics.map((item,index)=>{
+    return (<div className='flex justify-between items-center w-full' key={index}>
         <div className='w-4/5'>
         <div className='flex gap-4'>
         <Image src={item.icon} alt={"staff icons"} className='h-6 w-6 rounded-full'/>

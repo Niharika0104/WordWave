@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { ToastContainer } from 'react-toastify';
-// import { Poppins } from "next/font/google";
+import { Poppins } from "next/font/google";
 import 'react-toastify/dist/ReactToastify.css';
 import "./globals.css";
 import Navbar from "@/Components/HomePageComponents/Navbar";
 
-// const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["Poppins"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",

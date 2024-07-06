@@ -8,14 +8,17 @@ import { FaEye, FaGoogle, FaGithub,FaMailBulk,FaKey, FaEnvelope } from 'react-ic
 import { CgNametag } from "react-icons/cg";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from "next/navigation";
+import axios from "axios";
 
 export default function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const [loading,setloading]=useState(false)
+  const router=useRouter();
+  const handleSubmit = async(e: any) => {
     e.preventDefault();
     const validateEmail = (email: string) => {
       const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -50,6 +53,35 @@ export default function Register() {
       toast.error('Passwords do not match');
       return;
     }
+
+  else{
+    try{
+      setloading(true);
+  const req=await axios.post("/api/auth/register",
+    {
+     
+      "email":email,
+      "password":password,
+      "name":name
+     
+    }
+  )
+  setloading(false);
+if(req.data.status==200){
+
+
+await router.push("/home");
+}
+if(req.data?.status==401){
+toast.error('Invalid user');
+}
+  }
+
+catch(ex:any){
+  toast.error("some error has occured");
+console.log(ex);
+}
+}
 
   };
 
@@ -151,11 +183,13 @@ export default function Register() {
                   </div>
             </div>
             <div className="mt-6">
-              <button type="submit" className="w-full text-center h-10 bg-indigo-600 text-white rounded-md hover:opacity-80">Register</button>
+            <button type="submit" className="w-full flex justify-center items-center h-10 bg-indigo-600 text-white font-bold rounded-md hover:opacity-80" onClick={handleSubmit}>
+               {loading?<div className="animate-spin rounded-full h-6 w-6 border-t-4 border-b-4 border-white"></div>:<div>Register</div>} 
+              </button>
             </div>
           </form>
           <div className="text-center text-gray-900 font-bold text-md mt-5">
-            Already have an account? <span className="text-indigo-600 underline cursor-pointer">Login here</span>
+            Already have an account? <span className="text-indigo-600 underline cursor-pointer" onClick={()=>{router.push("/auth/login")}}>Login here</span>
           </div>
         </div>
       </div>

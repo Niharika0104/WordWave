@@ -5,8 +5,6 @@ import jwt from 'jsonwebtoken';
 import { useAuth } from "@/app/Context/AuthContext";
 import { NextRequest, NextResponse } from "next/server";
 
-
-
 interface User {
 
     name?: string;
@@ -53,19 +51,13 @@ export async function POST(req: NextRequest) {
                     secure: true,
                     path: '/',
                 });
-                const auth = useAuth(); // Ensure you have access to useAuth hook
-
-                if (auth) {
-                    auth.setUserFnc(result); // Set the user in context
-                } else {
-                    console.error("Auth context not available.");
-                }
+               
                 return NextResponse.json({ data: result, status: 200 });
             } else {
-                return NextResponse.json({ message: "Incorrect password", status: 401 });
+                return NextResponse.json({ message: "Incorrect credentials", status: 401 });
             }
         } else {
-            return NextResponse.json({ message: "User does not exist", status: 400 });
+            return NextResponse.json({ message: "Incorrect credentials", status: 401 });
         }
 
     } catch (error: any) {
