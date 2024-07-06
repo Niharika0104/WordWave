@@ -67,14 +67,14 @@ export default function Register() {
     }
   )
   
-if(req.data.status==200){
+if(req.data.status===200){
   setloading(false);
-
+  toast.success(req?.data?.message);
 await router.push("/home");
 }
-else if(req.data?.status!=401){
+else if(req.data?.status!=200){
   setloading(false);
-toast.error(req?.data?.status);
+toast.error(req?.data?.message);
 }
   }
 
