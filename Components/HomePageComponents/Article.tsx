@@ -8,11 +8,13 @@ import staffimage1 from "@/public/Images/staffimage1.png";
 import parse from 'html-react-parser';
 import { CgMoreAlt } from "react-icons/cg";
 import { PostInfo } from "@/app/Types/types";
-
+interface PostData{
+postdata:PostInfo
+}
 const handlefollow=()=>{
 
 }
-export default function Article(props:PostInfo){
+export default function Article(props:PostData){
 useEffect(()=>{
 
 },[])
