@@ -42,7 +42,7 @@ export default function Article() {
     const fetchData = async () => {
         setLoading(true);
         try {
-            const res = await axios.post("/api/post/posts", {
+            const res = await axios.post("/api/post/getposts", {
                 userId: auth?.user?.userId
             });
             setData(res.data.data);
@@ -76,7 +76,7 @@ export default function Article() {
                 data?.map((item, index) => (
                     <div className="flex justify-between items-center cursor-pointer" key={item?.id}>
                         <div className="flex flex-col gap-4 w-full">
-                            <div className="flex gap-2 items-center" onClick={() => router.push(`/${item.id}`)}>
+                            <div className="flex gap-2 items-center" onClick={() => router.push(`//home/${item.id}`)}>
                                 <Image src={staffimage1} alt={"staff icons"} width={24} height={24}   />
                                 <p>{item.author?.name}</p>
                             </div>
@@ -84,13 +84,13 @@ export default function Article() {
                                 {parse(item.title)}
                             </div>
                             <div className="flex w-full justify-between px-10">
-                                <div className="flex gap-3" onClick={() => router.push(`/${item.id}`)}>
+                                <div className="flex gap-3" onClick={() => router.push(`/home/${item.id}`)}>
                                     <div className="text-[14px]">{item.createdAt.split('T')[0]}</div>
                                     <div><PiHandsClappingFill fontSize={22} /></div>
                                     <div><LiaCommentSolid fontSize={22} /></div>
                                 </div>
                                 <div className="flex gap-3 relative ">
-                                    <div onClick={() => router.push(`/${item.id}`)}><MdOutlineBookmarkAdd fontSize={22} /></div>
+                                    <div onClick={() => router.push(`/home/${item.id}`)}><MdOutlineBookmarkAdd fontSize={22} /></div>
                                     <div className="flex flex-col  w-full">
                                         <FiMoreHorizontal fontSize={22} onClick={() => toggleShowMoreDropdown(index)} />
                                         {showMore === index && (
