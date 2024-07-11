@@ -18,6 +18,12 @@ export async function POST(req: NextRequest) {
             where: {
                 id: postdata.postId
             },
+            include:{
+author:true,
+category:true,
+likes:true,
+savedBy:true,
+            }
         });
         return NextResponse.json({data:post,status:200})
     } catch (error: any) {
