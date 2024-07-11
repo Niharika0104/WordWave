@@ -28,8 +28,8 @@ return (
         
           <div>
             <div className="flex flex-col gap-3">
-                <p>{props.author.name}</p>
-                <p>{props.createdAt}</p>
+                <p>{props.postdata.author.name}</p>
+                <p>{props.postdata.createdAt}</p>
 
             </div>
           </div>
@@ -41,8 +41,8 @@ return (
         {/* third section */}
         <div className="mt-8 border-t-2 border-b-2 border-gray-50 flex justify-between ">
             <div className="flex gap-2">
-               <div><PiHandsClapping/> {props.likes.length}</div> 
-               <div><BiChat/> {props.comments.length}</div> 
+               <div><PiHandsClapping/> {props.postdata.likes.length}</div> 
+               <div><BiChat/> {props.postdata.comments.length}</div> 
 
             </div>
             <div className="flex gap-2">
@@ -55,7 +55,7 @@ return (
         </div>
         {/* content */}
         <div>
-            {parse(props.content)}
+            {parse(props.postdata.content)}
         </div>
     </div>
 )
