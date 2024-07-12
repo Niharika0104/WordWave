@@ -6,7 +6,10 @@ import { NextRequest, NextResponse } from "next/server";
 
 
 interface PostData {
+    userId:string;
     postId:string;
+   
+   
 }
 
 export async function POST(req: NextRequest) {
@@ -14,24 +17,25 @@ export async function POST(req: NextRequest) {
         // Parse request body
         const postdata: PostData = await req.json();
    
-        const post = await client.post.findFirst({
-            where: {
-                id: postdata.postId
+        const post = await client.like.create({
+            data: {
+                userId: postdata.userId,
+                postId: postdata.postId
+            
+                
+            },
+        });
+        const postInfo=await client.post.findFirst({
+            where:{
+                id:postdata.postId
             },
             include:{
-author:true,
-category:true,
-likes:true,
-savedBy:true,
+                likes:true,
             }
-        });
-        return NextResponse.json({data:post,status:200})
+        })
+        return NextResponse.json({data:postInfo,status:200})
     } catch (error: any) {
         console.error("Error processing request:", error);
         return NextResponse.json({ message: "Internal server error", status: 500 });
     }
 }
-
-
-
-

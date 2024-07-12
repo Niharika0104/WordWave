@@ -1,25 +1,13 @@
-"use client"
+'use client'
 import Article from "@/Components/HomePageComponents/Article";
-import axios from "axios";
-import GetPost from "@/Components/GetParams/GetPostId";
-import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function ArticlePage() {
-  
-    const postId=GetPost();
-
-    const [data,setdata]=useState({});
-    useEffect(()=>{
-        async ()=>{
-        const res= await axios.post("/api/getpost",{
-            postId:postId
-        })
-        const data=res.data.data;
-        setdata(data);
-        }
-    },[])
+  const router =usePathname();
+  const postid=router.split('home/')[1];
+    
     return (
-     <div><Article postdata={data}/></div>
+     <div><Article postId={postid}/></div>
     );
   }
   
