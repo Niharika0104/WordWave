@@ -27,7 +27,10 @@ const imageExtracter=(content:string)=>{
     console.log(imgElements[0].getAttribute('src'))
     return imgElements[0].getAttribute('src');
 }
-export default function Article() {
+interface SearchInformation{
+    dataset?:PostInfo[]
+}
+export default function Article(props:SearchInformation) {
     const router = useRouter();
     const auth = useAuth();
     const [user, setUser] = useState(auth?.user);

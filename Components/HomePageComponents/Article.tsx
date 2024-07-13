@@ -47,10 +47,10 @@ export default function Article(props:PostData){
 
 return (
     
-    <div className="w-[60%] mx-auto mt-10">
+    <div className="w-[50%] mx-auto mt-10">
         <h1 className="text-black font-bold text-xl"> {parse(data?.title|| "")}</h1>
         {/* second sectoin */}
-        <div className="flex gap-2 mt-5">
+        <div className="flex gap-2 mt-5 ">
        
         <div className="flex items-center gap-3">
          
@@ -74,7 +74,7 @@ return (
 
 </div>
         {/* third section */}
-        <div className="mt-8 border-t-2 border-b-2 border-gray-50 flex justify-between items-center p-2">
+        <div className="mt-8 border-t-2 border-b-2 border-gray-100 flex justify-between items-center p-2 ">
             <div className="flex gap-2 items-center">
                <div className=" flex items-center gap-2 text-lg cursor-pointer" onClick={()=>{handleLike()}}><PiHandsClapping fontSize={30}/> <p>{data?.likes?.length}</p></div> 
                <div className="flex "><BiChat fontSize={30}/> <p>{data?.comments?.length}</p></div> 
