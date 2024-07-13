@@ -27,7 +27,10 @@ const imageExtracter=(content:string)=>{
     console.log(imgElements[0].getAttribute('src'))
     return imgElements[0].getAttribute('src');
 }
-export default function Article() {
+interface SearchInformation{
+    dataset?:PostInfo[]
+}
+export default function Article(props:SearchInformation) {
     const router = useRouter();
     const auth = useAuth();
     const [user, setUser] = useState(auth?.user);
@@ -76,7 +79,7 @@ export default function Article() {
                 data?.map((item, index) => (
                     <div className="flex justify-between items-center cursor-pointer" key={item?.id}>
                         <div className="flex flex-col gap-4 w-full">
-                            <div className="flex gap-2 items-center" onClick={() => router.push(`//home/${item.id}`)}>
+                            <div className="flex gap-2 items-center" onClick={() => router.push(`/home/${item.id}`)}>
                                 <Image src={staffimage1} alt={"staff icons"} width={24} height={24}   />
                                 <p>{item.author?.name}</p>
                             </div>

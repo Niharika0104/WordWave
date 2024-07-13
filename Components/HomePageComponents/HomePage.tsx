@@ -6,7 +6,7 @@ import StaffPick from '@/Components/HomePageComponents/StaffPick'
 import Recommendation from '@/Components/HomePageComponents/Recommendation'
 import WhoToFollow from '@/Components/HomePageComponents/WhoToFollow'
 import Footer from '@/Components/HomePageComponents/Footer'
-import Article from "./ArticlesSection"
+import ArticleSection from "./ArticlesSection"
 
 
 
@@ -17,7 +17,7 @@ return (
         <div className="w-[100%] sm:w-[60%] sm:border sm:border-gray-100">
             <div className="w-full  sm:w-4/5 mx-auto">
                 <TopicsScrollBar/>
-                <Article/>
+                <ArticleSection/>
             </div>
         </div>
         <div className="hidden sm:block w-[40%] border border-gray-100 ">
