@@ -26,7 +26,7 @@ export default function Article(props:PostData){
             userId:user.userId,
             postId:props.postId,
         })
-        alert(res?.data?.data?.likes?.length)
+ 
         setLike(res.data?.data?.likes?.length);
     }
  

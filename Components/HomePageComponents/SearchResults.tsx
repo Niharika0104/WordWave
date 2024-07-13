@@ -18,8 +18,10 @@ export default function SearchComponent(){
     },[])
 return (
 <>
-<div className="text-gray-400">Showing Search Results for <p className="text-gray-600">{query}</p> </div>
+<div className="text-gray-400 flex gap-2 mx-10 text-3xl">Showing Search Results for <p className="text-gray-700 font-bold">{query}</p> </div>
+ <div className="w-[50%] mx-auto">
 <ArticleSection dataset={res}/>
+</div>
 </>
 )
 }

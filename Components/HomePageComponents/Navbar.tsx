@@ -13,6 +13,13 @@ export default function Navbar() {
   const handleSearch=()=>{
     router.push(`/search?query=${search}`)
   }
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      router.push(`/search?query=${search}`);
+    }
+  };
+  
   useEffect(()=>{},[auth])
   return (
     <div className="bg-white w-full  sm:w-[95%] mx-auto flex items-center h-20 justify-between px-4">
@@ -23,7 +30,7 @@ export default function Navbar() {
         </div>
         <div className="hidden sm:flex sm:relative h-12  items-center bg-green-400 rounded-full">
           <input className="bg-[#f9f9f9] rounded-full pl-10 pr-4 py-2 h-full w-[100%] border-none focus-within:outline-none" placeholder="Search" 
-          value={search} onChange={(e)=>{setSearch(e.target.value)}}/>
+          value={search} onChange={(e)=>{setSearch(e.target.value)}} onKeyDown={handleKeyPress} />
           <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
             <BiSearch fontSize={25} onClick={()=>{
               handleSearch();
