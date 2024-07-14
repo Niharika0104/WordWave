@@ -21,6 +21,7 @@
     "is-url": "^1.2.4",
     "jsonwebtoken": "^9.0.2",
     "jsx-to-string": "^1.4.0",
+    "mindsdb-js-sdk": "^2.3.0",
     "next": "14.2.3",
     "nodemailer": "^6.9.13",
     "nookies": "^2.5.2",

@@ -30,7 +30,8 @@ export default function ChatAssistant() {
                     ) : null}
                 </div>
 
-                <div className="fixed bottom-0 left-0 w-full flex items-center bg-white border-t border-gray-300 p-3">
+                <div className="fixed bottom-0 left-0 w-full flex justify-center  bg-white border-t border-gray-300 p-3">
+                   
                     <input
                         type="text"
                         value={query}
@@ -39,13 +40,13 @@ export default function ChatAssistant() {
                         className="flex-1 p-2 border border-gray-300 rounded-lg placeholder:text-gray-500"
                     />
                     <button
-                        className="bg-indigo-600 px-4 py-2 text-white rounded-lg ml-3"
+                        className="bg-indigo-600 px-4 py-2 text-white rounded-lg ml-3 disabled:bg-gray-200 cursor-pointer disabled:text-gray-600 disabled:cursor-not-allowed"
                         disabled={query.length === 0}
                         onClick={handleSubmit}
                     >
                         Send
                     </button>
-                </div>
+               </div>
             </div>
         </>
     );
