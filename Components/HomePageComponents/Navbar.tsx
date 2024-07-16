@@ -3,7 +3,7 @@ import { BiSearch, BiEdit, BiUser } from "react-icons/bi";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/Context/AuthContext";
 import { useEffect,useState } from "react";
-
+import { BsStars } from "react-icons/bs";
 
 export default function Navbar() {
   const router=useRouter();
@@ -43,6 +43,10 @@ export default function Navbar() {
         <span className="flex items-center gap-1 cursor-pointer" onClick={()=>{router.push("/edit")}}>
           <BiEdit />
           <span>Editor</span>
+        </span>
+        <span className="flex items-center gap-1 cursor-pointer" onClick={()=>{window.open("/prompt", "_blank", "noopener,noreferrer");}}>
+          <BsStars />
+          <span>AI Assistant</span>
         </span>
         <span className="cursor-pointer">
        <div className="h-10 w-10 bg-amber-400 text-white rounded-full flex justify-center items-center">{auth?.user?.name?.charAt(0)?? <BiUser />}</div>  

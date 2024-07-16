@@ -1,10 +1,16 @@
 "use client"
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
 import Topics from '@/Constant/TopicsData';
+import axios from 'axios';
+import { useAuth } from "@/app/Context/AuthContext";
 const Carousel: React.FC = () => {
+  const {topic,setTopicFnc}=useAuth();
+  const [item,setItem]=useState("");
   const carouselRef = useRef<HTMLDivElement>(null);
-
+ const fetchRecords=()=>{
+setTopicFnc(item)
+ }
   const scrollLeft = () => {
     if (carouselRef.current) {
       carouselRef.current.scrollBy({ left: -200, behavior: 'smooth' });
@@ -30,7 +36,7 @@ const Carousel: React.FC = () => {
         ref={carouselRef}
       >
         {Topics.map((item:string,index)=>{
-          return ( <div className="px-2 text-gray-700 sm:px-4 w-min-max" key={index}>{item}</div>)
+          return ( <div className="px-2 text-gray-700 sm:px-4 w-min-max cursor-pointer" key={index} onClick={()=>{setItem(item);fetchRecords();}}>{item}</div>)
         })}
        
        

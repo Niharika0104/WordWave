@@ -7,7 +7,7 @@ import { MdOutlineBookmarkAdd } from "react-icons/md";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { CiCirclePlus } from "react-icons/ci";
 import { CiCircleMinus } from "react-icons/ci";
-
+import { AiFillAccountBook } from 'react-icons/ai';
 import parse from 'html-react-parser';
 import axios from "axios";
 import { useRouter } from 'next/navigation';
@@ -16,6 +16,7 @@ import Shimmer from './Shimmer';
 import { PostInfo } from '@/app/Types/types';
 import { ImGit } from 'react-icons/im';
 import { toast } from 'react-hot-toast';
+import { BiCategory } from 'react-icons/bi';
 const imageExtracter=(content:string)=>{
     const parser = new DOMParser();
 
@@ -33,12 +34,13 @@ interface SearchInformation{
 export default function Article(props:SearchInformation) {
     const router = useRouter();
     const auth = useAuth();
+    const {topic}=auth;
     const [user, setUser] = useState(auth?.user);
     const [loading, setLoading] = useState(false);
     const [showMore, setShowMore] = useState(null);
     const arr:PostInfo[]=[];
     const [data, setData] = useState(arr);
-    
+   
     const toggleShowMoreDropdown = (index) => {
         setShowMore(showMore === index ? null : index);
     };
@@ -54,7 +56,20 @@ export default function Article(props:SearchInformation) {
         } finally {
             setLoading(false);
         }
+        if(topic){
+            try {
+                const res = await axios.post("/api/post/getCategory", {
+                    category: topic
+                });
+                setData(res.data.data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            } finally {
+                setLoading(false);
+            }
+        }
     };
+   
     const deletepost=async (id:string)=>{
         const res=await axios.post("/api/post/delete", {
             postId:id
