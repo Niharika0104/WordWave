@@ -25,6 +25,18 @@ export async function POST(req: NextRequest) {
                 
             },
         });
+        // if (newPost) {
+        //     await fetch(`${process.env.BASE_URL}/api/ai/segment`, {
+        //       method: "POST",
+        //       headers: {
+        //         'Content-Type': 'application/json',
+        //       },
+        //       body: JSON.stringify({
+        //         postContent: newPost.content,
+        //         postId: newPost.id,
+        //       }),
+        //     });
+        //   }
         return NextResponse.json({message:"data added successfuly",status:200})
     } catch (error: any) {
         console.error("Error processing request:", error);

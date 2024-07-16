@@ -6,6 +6,8 @@ import axios from 'axios';
 interface AuthContextType {
     user: any;
     setUserFnc: (obj:any)=>void;
+    topic:string;
+    setTopicFnc:(t:string)=>void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -14,6 +16,8 @@ export const AuthProvider = ({ children }: Readonly<{
     children: React.ReactNode;
 }>) => {
     const [user, setUser] = useState<any>(null);
+    const [topic, setTopic] = useState<any>(null);
+
     const [loading,setloading]=useState(false);
     const setUserFnc=(obj:any)=>{
         console.log("users beingset")
@@ -41,7 +45,9 @@ export const AuthProvider = ({ children }: Readonly<{
     }
 
     return (
-        <AuthContext.Provider value={{ user, setUserFnc }}>
+        <AuthContext.Provider value={{ user, setUserFnc,topic,setTopicFnc(t) {
+            
+        }, }}>
             {children}
         </AuthContext.Provider>
     );
